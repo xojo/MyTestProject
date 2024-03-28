@@ -383,16 +383,18 @@ End
 		Private Function AddTeamRow(name As String, coach As String, city As String) As Boolean
 		  // Add a row to the Team table
 		  If Not IsConnected Then
-		    MessageDialog.Show("Create the database and create the table first.")
+		    MessageDialog.Show("Please create the database and create the table first.")
 		    Return False
 		  End If
 		  
+		  // Create a new row
 		  Var row As New DatabaseRow
 		  // ID will be added automatically
 		  row.Column("Name").StringValue = name
 		  row.Column("Coach").StringValue = coach
 		  row.Column("City").StringValue = city
 		  
+		  // Add the row to the Team table
 		  Try
 		    App.DB.AddRow("Team", row)
 		  Catch err As DatabaseException
